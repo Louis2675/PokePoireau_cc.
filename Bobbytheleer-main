@@ -1,6 +1,6 @@
 /**
  * Bienvenue sur Leek Wars !
- * Pour connaître le fonctionnement du jeu : leekwars.com/help/general
+ * Pour connaître le fonctionnemenhttps://leekwars.com/trophy/examinert du jeu : leekwars.com/help/general
  * Pour apprendre le langage LeekScript : leekwars.com/help/tutorial et leekwars.com/encyclopedia/Tutoriel_LeekScript
  * Pour progresser en fonction de son niveau (dès le niveau 1) : leekwars.com/encyclopedia/Tutoriel_par_niveau
  * Pour se documenter sur les fonctions disponibles : leekwars.com/help/documentation
@@ -20,35 +20,33 @@ var my_leek = getEntity();
 
 
 // use bandage
-if(getTotalLife() > getLife()) {
+if(getLife() < getTotalLife()/1.25) {
 	useChip(CHIP_BANDAGE, getEntity());
 }
 
-// Use Chip_Shock
-if (dist <= 6){
-	useChip(CHIP_SHOCK, enemy);
+if (dist <= 7) {
+	useChip(CHIP_PROTEIN, getEntity());
 }
-// On prend le pistolet
-setWeapon(WEAPON_PISTOL); // Attention : coûte 1 PT
 
+setWeapon(WEAPON_MACHINE_GUN);
+useWeapon(enemy);
+
+// Use Chip_Shock
+if (dist <= 5){
+	useChip(CHIP_PEBBLE, enemy);
+}
+
+
+
+useWeapon(WEAPON_MACHINE_GUN)
 
 // On avance vers l'ennemi
 moveToward(enemy);
-
-// On essaye de lui tirer dessus !
-useWeapon(enemy);
-
-// Take the pistol
-if (getTurn() == 1) {
-	setWeapon(WEAPON_PISTOL);
-}
 
 // Move towards him
 moveToward(enemy,2);
 // Try to soot him
 useWeapon(enemy);
-// Move away
-moveAwayFrom(enemy, 1);
 
 // Try to shoot him!
 var my_tp = getTP();
